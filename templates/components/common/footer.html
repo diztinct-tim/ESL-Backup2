@@ -1,0 +1,76 @@
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <section class="footer-info">
+
+            <article class="newsletter footer-info-col" data-section-type="newsletterSubscription">
+                {{> components/common/subscription-form}}
+                {{> components/common/social-links}}
+            </article>
+
+            <article class="footer-info-col footer-info-col--small">
+                <h5 class="footer-info-heading">Company Info</h5>
+                <ul class="footer-info-list">
+                    <li class="phone-or-chat"><a href="tel:+18006726868"><img src="{{cdn "img/phone-gray.png"}}" alt="">1-800-672-6868</a></li>
+                    <li class="phone-or-chat"><a href=""><img src="{{cdn "img/chat-gray.png"}}" alt="">Live Chat</a></li>
+                    <li><a href="/about-us/">About Us</a></li>
+                    <li><a href="/contact-us/">Contact Us</a></li>
+                    <li><a href="/shipping-returns/">Shipping & Returns</a></li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-col--small">
+                <h5 class="footer-info-heading">My ESL Supply</h5>
+                <ul class="footer-info-list">
+                    <li><a href="{{urls.account.index}}">My Account</a></li>
+                    {{#if customer}}
+                        <li><a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a></li>
+                    {{else}}
+                        <li><a href="{{urls.auth.login}}">Login</a> or <a href="{{urls.auth.create_account}}">Register</a></li>
+                    {{/if}}
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-col--small">
+                <h5 class="footer-info-heading">Popular Brands</h5>
+                <ul class="footer-info-list">
+                    <li><a href="">Brand Name</a></li>
+                    <li><a href="">Brand Name</a></li>
+                    <li><a href="">Brand Name</a></li>
+                    <li><a href="">Brand Name</a></li>
+                    <li><a href="">Brand Name</a></li>
+                    <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-col--small about">
+                <h5 class="footer-info-heading">A Little About Us</h5>
+                <ul class="footer-info-list">
+                    <li>At Energy Saving Lighting & Supply, our goal is to provide our customers a wide selection of the latest lighting products and various options to save money and protect the environment, while making the best choices for their homes and businesses. We offer a variety of products to meet your lighting needs, from energy efficient retrofit kits and LED light bulbs to help you save money on your electric bill and bulb replacement cost.</li>
+                    <a href="/about-us/">Read More &raquo</a>
+                </ul>
+            </article>
+
+
+
+        </section>
+    </div>
+
+    
+    <div class="bottom-foot-wrap">
+
+        {{> components/common/payment-icons}}
+
+        <div class="bottom-footer-link">
+            <ul>
+                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="">RSS Feed</a></li>
+                <li><a href="/terms/">Terms of Use</a></li>
+                <li><a href="/sitemap.php/">Sitemap</a></li>
+            </ul>
+            <p>Copyright 2016 eslsupply.com All Rights Reserved. <span><a href="https://www.diztinct.com/bigcommerce-design.html" target="_blank">BigCommerce Design</a> by Diztinct.com</span></p>
+        </div>
+
+    </div>
+
+
+</footer>

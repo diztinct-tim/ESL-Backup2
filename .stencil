@@ -1,0 +1,16 @@
+{
+  "normalStoreUrl": "http://esl-supply7.mybigcommerce.com",
+  "port": 3000,
+  "username": "Stencil",
+  "token": "b708459a73d7b3c168570b2e5d2f0d70ff5cc21a",
+  "customLayouts": {
+    "brand": {},
+    "category": {
+      "_landing.html" : "/led-lamps/"
+    },
+    "page": {
+      "_search.html" : "/searchresults/"
+    },
+    "product": {}
+  }
+}

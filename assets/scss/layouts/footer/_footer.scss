@@ -1,0 +1,409 @@
+// =============================================================================
+// FOOTER (CSS)
+// =============================================================================
+
+
+// Layout and columns
+// -----------------------------------------------------------------------------
+//
+// 1. To enable the grid's display: inline-block; to work properly, we need to
+//    remove the white-space that it creates between columns with font-size: 0;
+// 2. Re-set the font-size that was reduced to 0 in point 1 for children.
+//
+// -----------------------------------------------------------------------------
+
+.footer {
+    background-color: #ececec;
+    padding: 30px 20px 20px;
+}
+
+.footer-info {
+    font-size: 0; // 1
+}
+
+.footer-info-col {
+
+    color: stencilColor("color-textSecondary");
+    display: inline-block;
+    float: none;
+    font-size: fontSize("base"); // 2
+    margin-bottom: 0px;
+    text-align: center;
+    vertical-align: top;
+
+    @include breakpoint("small") {
+        text-align: left;
+        width: 100%;
+    }
+
+    @include breakpoint("medium") {
+        width: width("4/12");
+    }
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.footer-info-col--small {
+
+    width:100%;
+
+    @include breakpoint("medium") {
+        width: 33.33%;
+    }
+    @include breakpoint("large"){
+        width:20%;
+    }
+}
+
+.footer-info-list {
+    display: block;
+}
+
+
+// Content
+// -----------------------------------------------------------------------------
+
+.footer-info-heading {
+    position:relative;
+    color: #000;
+    font-size: 16px;
+    text-align: left;
+    font-family:$aktiv;
+    font-weight:700;
+    text-transform: uppercase;
+    cursor:pointer;
+    margin: 0px;
+    padding: 10px 0px;
+    border-bottom: 1px solid #ccc;
+    @include breakpoint("medium"){
+        border-bottom:none;
+        cursor:default;
+    }
+}
+.footer-info-heading:after {
+    content:"";
+    display:inline-block;
+    background:url(/content/img/black-arrow-down.png);
+    background-size:17px 10px;
+    height:10px;
+    width:17px;
+    position:absolute;
+    right:20px;
+    top:19px;
+    @include breakpoint("medium"){
+        background:none;
+    }
+}
+.footer-info-heading.open:after {
+    content:"";
+    display:inline-block;
+    background:url(/content/img/black-arrow-up.png);
+    background-size:17px 10px;
+    height:10px;
+    width:17px;
+    position:absolute;
+    right:20px;
+    top:19px;
+}
+
+.footer-info-list {
+    display:none;
+    list-style: none;
+    text-align:left;
+    margin:10px 0px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+
+    li{
+        padding:5px 0px;
+        color:#595959;
+        font-size:14px;
+    }  
+
+    a {
+        color: #595959;
+        text-decoration: none;
+        font-size:14px;
+
+        // scss-lint:disable NestingDepth
+        &:hover {
+            text-decoration:underline;
+        }
+        // scss-lint:enable NestingDepth
+    }
+    @include breakpoint("medium"){
+        display:block;
+        border-bottom:none;
+        margin-top:0px;
+    }
+}
+
+.footer-copyright {
+    text-align: center;
+
+    @include breakpoint("small") {
+        text-align: left;
+    }
+
+    > .powered-by {
+        color: stencilColor("color-textSecondary");
+        font-size: fontSize("tiny");
+        margin: 0;
+    }
+
+    a {
+        color: stencilColor("color-textSecondary");
+        text-decoration: none;
+
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: stencilColor("color-textSecondary--hover");
+        }
+        // scss-lint:enable NestingDepth
+    }
+}
+
+.footer-info-col.footer-info-col--small.about {
+    @include breakpoint("medium"){
+        width: 100%;
+        margin-bottom:20px;
+    }
+    @include breakpoint("large"){
+        width:40%;
+    }
+}
+
+.footer-payment-icons {
+
+    ul {
+        margin:20px 0px;
+        text-align:center;
+
+        > li{
+            display:inline-block;
+            margin:0px 1px;
+
+            > img{
+                height:30px;
+                width:50px;
+
+                @include breakpoint("medium") {
+                    height: 40px;
+                    width: 70px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+    
+}
+
+.bottom-footer-link{
+    ul {
+
+        list-style:none;
+        margin:0px;
+        text-align:center;
+
+        > li{
+            display:inline-block;
+            padding:0px 2px;
+            font-size:12px;
+            color:#595959;
+            border-right:1px solid #ccc;
+
+            &:last-child{
+                border-right:none;
+            }
+
+            a{
+                text-decoration: none;
+            }
+        }
+    }
+    p{
+        font-size:12px;
+        margin-top:20px;
+        margin-bottom:0px;
+        color:#595959;
+        text-align:center;
+    }
+}
+
+.bottom-foot-wrap {
+
+    @include breakpoint("medium"){
+        padding: 20px;
+        background: #fff;
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        margin-bottom: -20px;
+    }
+}
+
+
+
+.newsletter{
+    padding-bottom: 20px;
+    border-bottom: 5px solid #ddd;
+    width:100%;
+    margin-bottom:10px;
+
+    h5{
+        color: #000;
+        font-family:$aktiv;
+        font-size: 24px;
+        margin: 0px 0px 10px 0px;
+        font-weight: 700;
+        text-align:center;
+        text-transform: none;
+        @include breakpoint("large"){
+            float: left;
+            margin-right: 20px;
+        }
+    }
+    .form-field{
+        margin-bottom:0px;
+    }
+    #nl_email {
+        flex: none !important;
+        display: inline-block !important;
+        width: calc(100% - 85px) !important;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .button.button--primary.form-prefixPostfix-button--postfix{
+        margin-top:0px;
+        flex: none !important;
+        display: inline-block !important;
+        width: 85px !important;
+        padding:0px;
+        background:#57912b;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border:none;
+    }
+    @include breakpoint("medium"){
+
+        margin-bottom:30px;
+        padding-bottom:30px;
+
+        form.form {
+            margin: 0 auto 1.5rem auto;
+            max-width: 600px;
+        }
+        #nl_email{
+            border-radius:20px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            width:calc(100% - 100px) !important;
+        }
+        .button.button--primary.form-prefixPostfix-button--postfix{
+            border-radius:20px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            width:100px !important;
+            margin-left: 0px;
+            font-size:15px;
+        }
+    }
+    @include breakpoint("large"){
+
+        padding-bottom:25px;
+
+        form.form{
+            margin:0px;
+            float:left;
+            width:40%;
+        }
+    }
+
+}
+.socialLinks{
+
+    margin:0px;
+    text-align: center;
+
+    li{
+        height:25px;
+        width:25px;
+        display:inline-block;
+        margin:0px 3%;
+        img{
+            height:25px;
+            width:25px;
+        }
+    }
+    @include breakpoint("medium"){
+
+        li{
+            margin:0px 10px;
+            height:30px;
+            width:30px;
+            img{
+                height:30px;
+                width:30px;
+            }
+        }
+
+    }
+    @include breakpoint("large"){
+        float:right;
+        margin-top:6px;
+    }
+}
+
+.phone-or-chat{
+
+    > a{
+
+        font-weight:700;
+        color:#595959;
+        font-family:$aktiv;
+        font-size:14px;
+
+         > img {
+            height: 22px;
+            width: 22px;
+            position: relative;
+            top: -1px;
+            margin-right: 7px;
+        }
+    }
+
+} 
+
+.about > ul > a{
+    border:2px solid #57912b;
+    padding:5px 15px 8px;
+    color:#57912b;
+    font-weight:500;
+    display:block;
+    width:115px;
+    margin-top:10px;
+    font-size:14px;
+    &:hover{
+        background:#57912b;
+        color:#fff;
+        text-decoration: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

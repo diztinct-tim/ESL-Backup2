@@ -1,0 +1,256 @@
+<div class="productView">
+    {{#each product.reviews.messages}}
+        {{#if error}}
+            {{>components/common/alert-error error}}
+        {{/if}}
+        {{#if success}}
+            {{>components/common/alert-success success}}
+        {{/if}}
+    {{/each}}
+
+    
+
+    <section class="productView-images" data-image-gallery>
+        <figure class="productView-image"
+                data-image-gallery-main
+                data-zoom-image="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}"
+                >
+            <a href="{{getImage product.main_image 'zoom_size' (cdn theme_settings.default_image_product)}}">
+                <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" data-main-image>
+            </a>
+        </figure>
+        <ul class="productView-thumbnails">
+            {{#each product.images}}
+                <li class="productView-thumbnail">
+                    <a
+                        class="productView-thumbnail-link"
+                        href="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-item
+                        data-image-gallery-new-image-url="{{getImage this 'product_size' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-zoom-image-url="{{getImage this 'zoom_size' (cdn ../theme_settings.default_image_product)}}">
+                        <img src="{{getImage this 'productthumb_size' (cdn ../theme_settings.default_image_product)}}" alt="{{this.alt}}">
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </section>
+
+    <section class="productView-details">
+        <div class="productView-product">
+            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+
+            <div class="productView-rating"{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}>
+                {{#if settings.show_product_rating}}
+                    {{#if product.num_reviews '>' 0}}
+                        {{#if schema}}
+                            <meta itemprop="ratingValue" content="{{product.rating}}">
+                            <meta itemprop="ratingCount" content="{{product.num_reviews}}">
+                            <meta itemprop="reviewCount" content="{{product.num_reviews}}">
+                        {{/if}}
+                    {{/if}}
+                    {{> components/products/ratings rating=product.rating}}
+                    <span class="productView-reviewLink">
+                        {{#if product.num_reviews '>' 0}}
+                            <a href="{{product.url}}#product-reviews">
+                                {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                            </a>
+                        {{else}}
+                            {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                        {{/if}}
+                    </span>
+                {{/if}}
+                {{#if settings.show_product_reviews}}
+                    <span class="productView-reviewLink">
+                        <a href="{{product.url}}{{#if is_ajax}}#writeReview{{/if}}"
+                           {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
+                           {{lang 'products.reviews.new'}}
+                        </a>
+                    </span>
+                    {{> components/products/modals/writeReview}}
+                {{/if}}
+            </div>
+
+            {{#if product.price}}
+                <div class="productView-price">
+                    {{> components/products/price price=product.price schema_org=schema}}
+                </div>
+            {{/if}}
+
+            <p class="same-day-ship">+ Free, Same Day Shipping <a href="/shipping-returns/">details</a></p>
+
+        </div>
+    </section>
+
+    <section class="productView-details">
+        <div class="productView-options">
+           
+            <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                  data-cart-item-add>
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="product_id" value="{{product.id}}"/>
+
+
+                    {{#each product.customizations}}
+                        {{{dynamicComponent 'components/products/customizations'}}}
+                    {{/each}}
+                <div data-product-option-change>
+                    {{#each product.options}}
+                        {{{dynamicComponent 'components/products/options'}}}
+                    {{/each}}
+                </div>
+
+                <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
+                    <label class="form-label form-label--alternate">
+                        {{lang 'products.current_stock'}}
+                        <span data-product-stock>{{product.stock_level}}</span>
+                    </label>
+
+                </div>
+
+                {{#if product.can_purchase}}
+
+                    <div class="form-field form-field--increments">
+                        <label class="form-label form-label--alternate qty-label"
+                               for="qty[]">Qty:</label>
+
+                        <div class="form-increment" data-quantity-change>
+                            <select class="form-input form-input--incrementTotal bg-img-here"
+                                   id="qty[]"
+                                   name="qty[]"
+                                   type="tel"
+                                   value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                   data-quantity-min="{{product.min_purchase_quantity}}"
+                                   data-quantity-max="{{product.max_purchase_quantity}}"
+                                   min="1"
+                                   pattern="[0-9]*">
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>6</option>
+                                       <option>7</option>
+                                       <option>8</option>
+                                       <option>9</option>
+                                       <option>10</option>
+                               </select>
+                        </div>
+
+                    </div>
+
+                    <div class="alertBox productAttributes-message" style="display:none">
+                        <div class="alertBox-column alertBox-icon">
+                            <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
+                        </div>
+                        <p class="alertBox-column alertBox-message"></p>
+                    </div>
+
+                    <div class="form-action atc-btn">
+                        <input id="form-action-addToCart" data-wait-message="Adding" class="button button--primary" type="submit"
+                               value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}Add to Cart &raquo{{/if}}">
+                    </div>
+                    {{{snippet 'product_addtocart'}}}
+                {{/if}}
+                {{#if product.out_of_stock}}
+                    {{#if product.out_of_stock_message}}
+                        {{>components/common/alert-error product.out_of_stock_message}}
+                    {{else}}
+                        {{>components/common/alert-error (lang 'products.sold_out')}}
+                    {{/if}}
+                {{/if}}
+
+            </form>
+
+            <div class="wishlist-social cf">
+                <form class="form cf" method="post" action="{{product.add_to_wishlist_url}}" data-wishlist-add>
+                    <div class="form-action">
+                        <input type="hidden" name="variation_id" value="">
+                        <input class="button" type="submit" value="+ Wishlist">
+                    </div>
+                </form>
+                {{>components/common/share}}
+            </div>
+            
+        </div>
+
+        
+        {{{snippet 'product_details'}}}
+
+        <div class="item-deets cf">
+            {{product.detail_messages}}
+            <ul>
+                {{#if product.sku}}
+                    <li>SKU: {{product.sku}}</li>
+                {{/if}}
+                {{#if product.upc}}
+                    <li>UPC: {{product.upc}}</li>
+                {{/if}}
+                {{#if product.mpn}}
+                    <li>MPN: {{product.mpn}}</li>
+                {{/if}}
+            </ul>
+        </div>
+    </section>
+
+
+    <article class="productView-description desc-tainer"{{#if schema}} itemprop="description"{{/if}}>
+        {{{product.description}}}
+        {{{snippet 'product_description'}}}
+
+        <div class="view-more-wrap">
+            <a href="#full-description" class="view-more">More &raquo</a>
+        </div>
+
+    </article>
+
+    <div class="why-shop-pp">
+        <ul>
+            <li class="forty-years">
+                <img src="{{cdn "img/pp-1_03.png"}}" alt="">
+                <h5>40 Years in Business</h5>
+                <p>Changing the world one light bulb at a time for over 40 years.</p>
+                <a href="/about-us/">About Us</a>
+            </li>
+            <li>
+                <img class="closed-img" src="{{cdn "img/pp-1_05.png"}}" alt="">
+                <img class="open-img" src="{{cdn "img/pp-1_18.png"}}" alt="">
+                <h5>Experts are standing by &raquo</h5>
+                <p>Changing the world one light bulb at a time for over 40 years.</p>
+                <a href="/about-us/">About Us</a>
+            </li>
+            <li>
+                <img class="closed-img" src="{{cdn "img/pp-1_07.png"}}" alt="">
+                <img class="open-img" src="{{cdn "img/pp-1_19.png"}}" alt="">
+                <h5>Easy 30-day returns &raquo</h5>
+                <p>Changing the world one light bulb at a time for over 40 years.</p>
+                <a href="/about-us/">About Us</a>
+            </li>
+            <li>
+                <img class="closed-img" src="{{cdn "img/pp-1_11.png"}}" alt="">
+                <img class="open-img" src="{{cdn "img/pp-1_21.png"}}" alt="">
+                <h5>Free next day shipping &raquo</h5>
+                <p>Changing the world one light bulb at a time for over 40 years.</p>
+                <a href="/about-us/">About Us</a>
+            </li>
+            <li>
+                <img class="closed-img" src="{{cdn "img/pp-1_09.png"}}" alt="">
+                <img class="open-img" src="{{cdn "img/pp-1_20.png"}}" alt="">
+                <h5>Your order is secure &raquo</h5>
+                <p>Changing the world one light bulb at a time for over 40 years.</p>
+                <a href="/about-us/">About Us</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+</div>
+
+<div id="previewModal" class="modal modal--large" data-reveal>
+    <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+        <span aria-hidden="true">&#215;</span>
+    </a>
+    <div class="modal-content"></div>
+    <div class="loadingOverlay"></div>
+</div>

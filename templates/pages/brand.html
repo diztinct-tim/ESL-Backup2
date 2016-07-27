@@ -1,0 +1,78 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+
+brands: 
+    limit: 30
+
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<script type="text/javascript">
+
+    var catstring = '';
+    catstring = $('ul.breadcrumbs li:last-child').text();
+    var bcount = $('ul.breadcrumbs li').length;
+    bcount = bcount - 2;
+    catstring = catstring.replace(/[^a-z0-9\s]/gi, '').replace(/\s\s+/g, '');
+    console.log('catstring = ' + catstring);
+    console.log('bcount = '+ bcount);
+
+    if (typeof nxtOptions !== 'object') {
+        var nxtOptions = {}
+    }
+    
+    nxtOptions.initialRefines = "Brand="+catstring+"";
+    nxtOptions.searchReturn = 'just_refines';
+    nxtOptions.hiddenRefines = "Brand";
+
+</script>
+
+{{#if brand.image}}
+    <img src="{{getImage brand.image 'thumb_size'}}">
+{{/if}}
+<h1 class="page-heading">{{brand.name}}</h1>
+{{{snippet 'brand'}}}
+<div class="page category-page">
+    <aside class="page-sidebar" id="faceted-search-container">
+    <span class="narrow">Filter</span>
+        <div class="sidebar-wrap cf">
+            <div id="nextopia-sidebar">
+                {{> components/category/sidebar}}
+            </div>
+        </div>
+
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <div id="nextopia-main">
+            <span class="sort-dd">Sort</span>
+            <div class="sort-by-area">
+                {{> components/products/filter sort=pagination.category.sort}}
+            </div>
+            {{#if brand.products}}
+                {{> components/brand/product-listing}}
+            {{else}}
+                <p>{{lang 'brands.no_products'}}</p>
+            {{/if}}
+        </div>
+    </main>
+</div>
+
+
+
+
+{{/partial}}
+{{> layout/base}}

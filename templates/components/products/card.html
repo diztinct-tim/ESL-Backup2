@@ -1,0 +1,25 @@
+<article class="card {{#if alternate}}card--alternate{{/if}}">
+    <figure class="card-figure">
+        <a href="{{url}}">
+            <img class="card-image" src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}">
+        </a>
+    </figure>
+    <div class="card-body">
+        {{#if brand.name}}
+            <p class="card-text brand" data-test-info-type="brandName"><a href="{{url}}">{{brand.name}}</a></p>
+        {{/if}}
+        <h4 class="card-title">
+            <a href="{{url}}">{{name}}</a>
+        </h4>
+        <div class="card-text price" data-test-info-type="price">
+            {{> components/products/price price=price}}
+        </div>
+         {{#if show_rating}}
+            <p class="card-text rating" data-test-info-type="productRating">
+                <span class="rating--small">
+                    {{> components/products/ratings rating=rating}}
+                </span>
+            </p>
+        {{/if}}
+    </div>
+</article>

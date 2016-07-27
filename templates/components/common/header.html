@@ -1,0 +1,345 @@
+<header class="header {{#if template_file '===' 'pages/home'}}home{{/if}}" role="banner">
+
+    <div class="desk-promo-txt">
+        <div class="content-wrap">
+            <p class="left">Free next day shipping on all orders. <a href="/shipping-returns/">see details</a></p>
+            <ul>
+                <li><a href="tel:+18006726868">1-800-672-6868</a></li>
+                <li><a href="">Live Chat</a></li>
+                <li><a href="/contact-us/">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-wrap cf">
+
+        {{#if template_file '===' 'pages/home'}}
+            <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </h1>
+        {{else}}
+            <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </div>
+        {{/if}}
+
+
+        <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+            <span class="mobileMenu-toggleIcon">Toggle menu</span>
+            <span class="menu-txt">MENU</span>
+        </a>
+
+        <div class="header-search">
+            {{> components/common/search-box}}
+        </div>
+        
+        {{> components/common/navigation}}
+
+        <div class="navPages-container" id="menu" data-menu>
+            {{> components/common/navigation-menu}}
+        </div>
+
+    </div>
+
+</header>
+
+<div class="mob-promo-txt">
+    <p>Free next day shipping on all orders. <a href="/shipping-returns/">See Details</a></p>
+</div>
+    
+
+
+
+<!-- HIDE ALL THESE TO GET APPENDED IN VIA JS -->
+<div class="always-hidden-wrapper">
+    <div class="pop-cats-menu Electrical">
+        <ul class="">
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_05.jpg'}}" alt="">
+                <span>LED A-Style &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_07.jpg'}}" alt="">
+                <span>LED Decorative &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_09.jpg'}}" alt="">
+                <span>LED Dimmers &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_15.jpg'}}" alt="">
+                <span>LED HID Retrofit &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_18.jpg'}}" alt="">
+                <span>LED Linear &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_20.jpg'}}" alt="">
+                <span>LED Miniature &raquo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="pop-cats-menu Home-Outdoor">
+        <ul class="">
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_05.jpg'}}" alt="">
+                <span>LED A-Style &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_07.jpg'}}" alt="">
+                <span>LED Decorative &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_09.jpg'}}" alt="">
+                <span>LED Dimmers &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_15.jpg'}}" alt="">
+                <span>LED HID Retrofit &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_18.jpg'}}" alt="">
+                <span>LED Linear &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_20.jpg'}}" alt="">
+                <span>LED Miniature &raquo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pop-cats-menu Lamps-Ballasts">
+        <ul class="">
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_05.jpg'}}" alt="">
+                <span>LED A-Style &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_07.jpg'}}" alt="">
+                <span>LED Decorative &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_09.jpg'}}" alt="">
+                <span>LED Dimmers &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_15.jpg'}}" alt="">
+                <span>LED HID Retrofit &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_18.jpg'}}" alt="">
+                <span>LED Linear &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_20.jpg'}}" alt="">
+                <span>LED Miniature &raquo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pop-cats-menu LED Flashlights">
+        <ul class="">
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_05.jpg'}}" alt="">
+                <span>LED A-Style &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_07.jpg'}}" alt="">
+                <span>LED Decorative &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_09.jpg'}}" alt="">
+                <span>LED Dimmers &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_15.jpg'}}" alt="">
+                <span>LED HID Retrofit &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_18.jpg'}}" alt="">
+                <span>LED Linear &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_20.jpg'}}" alt="">
+                <span>LED Miniature &raquo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pop-cats-menu LED Lamps">
+        <ul class="">
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_05.jpg'}}" alt="">
+                <span>LED A-Style &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_07.jpg'}}" alt="">
+                <span>LED Decorative &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_09.jpg'}}" alt="">
+                <span>LED Dimmers &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_15.jpg'}}" alt="">
+                <span>LED HID Retrofit &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_18.jpg'}}" alt="">
+                <span>LED Linear &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_20.jpg'}}" alt="">
+                <span>LED Miniature &raquo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pop-cats-menu LED-Rope-Lights">
+        <ul class="">
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_05.jpg'}}" alt="">
+                <span>LED A-Style &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_07.jpg'}}" alt="">
+                <span>LED Decorative &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_09.jpg'}}" alt="">
+                <span>LED Dimmers &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_15.jpg'}}" alt="">
+                <span>LED HID Retrofit &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_18.jpg'}}" alt="">
+                <span>LED Linear &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_20.jpg'}}" alt="">
+                <span>LED Miniature &raquo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pop-cats-menu Lighting Fixtures">
+        <ul class="">
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_05.jpg'}}" alt="">
+                <span>LED A-Style &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_07.jpg'}}" alt="">
+                <span>LED Decorative &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_09.jpg'}}" alt="">
+                <span>LED Dimmers &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_15.jpg'}}" alt="">
+                <span>LED HID Retrofit &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_18.jpg'}}" alt="">
+                <span>LED Linear &raquo</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="{{ cdn '/img/mega-menu-pop-cats_20.jpg'}}" alt="">
+                <span>LED Miniature &raquo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+</div>

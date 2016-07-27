@@ -1,0 +1,76 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if category.image}}
+    <img src="{{getImage category.image 'zoom_size'}}">
+{{/if}}
+<h1 class="page-heading">{{category.name}}</h1>
+
+{{{snippet 'categories'}}}
+
+<div class="page category-page">
+
+    <aside id="faceted-search-container" class="page-sidebar">
+
+        {{#if category.subcategories}}
+            <nav class="sub-cat-list">
+                <div class="sidebarBlock">
+                    <h5 class="sidebarBlock-heading">Shop By Category</h5>
+                    <ul class="navList">
+                        {{#each category.subcategories}}
+                        <li class="navList-item">
+                            <a class="navList-action" href="{{url}}" alt="{{name}}">{{name}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </nav>
+        {{/if}}
+    
+        <span class="narrow">Filter</span>
+        <div class="sidebar-wrap cf">
+            <div id="nextopia-sidebar">
+                {{> components/category/sidebar}}    
+            </div>
+        </div>
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+
+        <div class="seo-txt">
+            {{{category.description}}}
+        </div>
+        
+        <div id="nextopia-main">
+            <span class="sort-dd">Sort</span>
+            <div class="sort-by-area">
+                {{> components/products/filter sort=pagination.category.sort}}
+            </div>
+            {{#if category.products}}
+                {{> components/category/product-listing}}
+            {{else}}
+                <p>{{lang 'categories.no_products'}}</p>
+            {{/if}}
+        </div>
+    </main>
+
+</div>
+
+{{/partial}}
+{{> layout/base}}

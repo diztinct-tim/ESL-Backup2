@@ -1,0 +1,48 @@
+---
+product_results:
+    limit: {{theme_settings.searchpage_products_per_page}}
+---
+{{inject 'categoryTree' forms.search.category_options}}
+{{inject 'searchProductsPerPage' theme_settings.searchpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.product_results.previous}}
+        <link rel="prev" href="{{pagination.product_results.previous}}">
+    {{/if}}
+    {{#if pagination.product_results.next}}
+        <link rel="next" href="{{pagination.product_results.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{{snippet 'search'}}}
+
+<div class="page category-page">
+
+    <aside id="faceted-search-container" class="page-sidebar">
+        <span class="narrow">Filter</span>
+        <div class="sidebar-wrap cf">
+            <div id="nextopia-sidebar">
+                {{> components/category/sidebar}}    
+            </div>
+        </div>
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <div id="nextopia-main">
+            <span class="sort-dd">Sort</span>
+            <div class="sort-by-area">
+                {{> components/products/filter sort=pagination.category.sort}}
+            </div>
+            {{#if category.products}}
+                {{> components/category/product-listing}}
+            {{else}}
+                <p>{{lang 'categories.no_products'}}</p>
+            {{/if}}
+        </div>
+    </main>
+
+</div>
+
+{{/partial}}
+{{> layout/base}}
